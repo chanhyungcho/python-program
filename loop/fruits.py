@@ -23,9 +23,9 @@ class Fruits(object):
         print("********************************")
     
     @staticmethod
-    def main():
+    def ddd():
         friuts=Fruits()
         friuts.print_menu
-Fruits.main()
+Fruits.ddd()
 
 

@@ -8,7 +8,7 @@ class Calculator(object):
         num1 = self.num1
         op = self.op
         num2 =self.num2
-        if op == "+":
+        if op == "+": 
            result = num1 + num2
         elif op == "-":
            result = num1 - num2
