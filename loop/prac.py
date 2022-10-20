@@ -1,31 +1,33 @@
-'''
-두자리 정수 랜덤숫자 10개를 뽑아서
-사용자가 검색하는 숫자의 배수만 출력하는
-프로그램을 계발하시오.
-예) [23, 12, 48,...,]
-사용자의 input 값이 12인 경우
-출력값이 12, 48만 되도록 한다.
-'''
+from curses import pair_number
 
-from random_list import RandomList
 
-class Prac(object):
-    def __init__(self,num) -> None:
-        self.num = num
-
-    def print(self):
-        rl = RandomList()
-        num = self.num
-        r2 = rl.get_random(11,100,10)
-        print(r2)
-        for i in r2:
-            if i % num == 0:
-                print (i)
+class Contact(object):
+    def __init__(self,name,pnum,mail,addr) -> None:
+        self.name = name
+        self.pnum = pnum
+        self.mail = addr
+        self.mail = mail
 
     @staticmethod
-    def main():
-        num = int(input("숫자: "))
-        pr = Prac(num)
-        pr.print()
+    def new_contact():
+        name = (input("이름:"))
+        pnum = (input("번호:"))
+        mail = (input("메일:"))
+        addr = (input("주소:"))
+        return Contact(name,pnum,mail,addr)
 
-Prac.main()
+    def print_info(self):
+        print(f"{self.name}, {self.pnum}, {self.mail}, {self.addr}")
+
+    @staticmethod
+    def get_contact():
+        for i in 
+
+    @staticmethod
+    def print_menu():
+        print("1. 연락처 등록")
+        print("2. 연락처 출력")
+        print("3. 연락처 삭제")
+        print("4. 종료")
+        menu = input("메뉴 선택: ")
+        return int(menu)

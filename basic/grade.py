@@ -14,78 +14,82 @@
 이름 국어 영어 수학 총점 평균 학점
 *******************************
 홍길동 90 90 92 272 90.6 A
+이순신 90 90 92 272 90.6 A
+유관순 90 90 92 272 90.6 A
 ********************************
 """
-from audioop import avg
-from functools import total_ordering
-from msilib import schema
-from typing_extensions import Self
-from unicodedata import name
-
 
 class Grade(object):
-    def __init__(self,name,nl,en,mt,total,avg,grade) -> None:
+
+    def __init__(self, name, ko, en, ma) -> None:
         self.name = name
-        self.nl = nl
+        self.ko = ko
         self.en = en
-        self.mt = mt
-        self.total = total
-        self.avg = avg
-        self.grade = ""
+        self.ma = ma
+        self.set_total()
+        self.set_avg()
+        self.set_grade()
 
-    def execute(self):
-        self.grade = self.get_Grade()
-        self.get_grade()
-        self.print_grade()
+    def set_total(self):
+        self.total = self.ko + self.en + self.ma
 
-    def get_total(self):
-        total = self.nl + self.en + self.mt
-        return total
+    def set_avg(self):
+        self.avg = self.total / 3
 
-    def get_avg(self):
-        avg = self.get_total() / 3
-        return avg
-
-    def get_grade(self):
-        grade = ""
-        avg = self.get_avg()
-        if avg >= 90:
-            grade = "A"
-        elif avg >= 80:
-            grade = "B"
-        elif avg >= 70:
-            grade = "C"
-        elif avg >= 60:
-            grade = "D"
-        elif avg >= 50:
-            grade = "E"
-        else:
-            grade = "F" 
+    def set_grade(self):
+        avg = self.avg
+        if avg >= 90: grade = "A"
+        elif avg >= 80: grade = "B"
+        elif avg >= 70: grade = "C"
+        elif avg >= 60: grade = "D"
+        elif avg >= 50: grade = "E"
+        else : grade = "F"
+        self.grade = grade
 
     def print_grade(self):
-        name = self.name
-        nl = self.nl
-        en = self.en
-        mt = self.mt
-        total = self.total
-        avg = self.avg
-        grade = self.grade
-        title = "### 성적표 ###"
-        aster = "*"*40
-        schema = "이름 국어 영어 수학 총점 평균 학점"
-        result = f"{name} {nl} {en} {mt} {total} {avg} {grade}"
-        print(f'{title} \n {aster} \n {schema} \n {aster} \n {result} {aster}')
+        print(f"{self.name} {self.ko} {self.en} {self.ma} {self.total} {self.avg} {self.grade}")
 
     @staticmethod
+    def new_grade():
+        return Grade(input("이름: "), 
+                    int(input("국어: ")), 
+                    int(input("영어: ")), 
+                    int(input("수학: ")))
+
+    @staticmethod
+    def print_table(ls):
+        print("### 성적표 ###")
+        print("********************************")
+        print("이름 국어 영어 수학 총점 평균 학점")
+        print("*******************************")
+        for i in ls: 
+            i.print_grade()
+        print("********************************")
+
+    @staticmethod
+    def print_menu():
+        print("1. 성적 등록")
+        print("2. 성적 출력")
+        print("3. 성적 삭제")
+        print("4. 종료")
+        return int(input("메뉴 선택: "))
+    
+    @staticmethod
     def main():
-        name = input("이름: ")
-        nl = int(input("국어: "))
-        en = int(input("영어: "))
-        mt = int(input("수학: "))
-        total = total()
-        avg = avg()
-        grade = Grade(name, nl, en, mt, total, avg, grade)
-        grade.execute()
+        ls = []
+        while True:
+            menu = Grade.print_menu()
+            if menu == 1:
+                print(" ### 성적 등록 ### ")
+                ls.append(Grade.new_grade())
+            elif menu == 2:
+                print(" ### 성적 출력 ### ")
+                Grade.print_table(ls)
+            elif menu == 3:
+                print(" ### 성적 삭제 ### ")
+            elif menu == 4:
+                print(" ### 종료 ### ")
+                break
 
 Grade.main()
-
+    

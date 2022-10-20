@@ -1,17 +1,22 @@
-import random
+
+
+from random_list import RandomList
 
 class Bubble(object):
     def __init__(self) -> None:
         pass
 
-    def extract_random(self):
-        return random.sample(range(1,101), k = 10)
-
     def print_random(self):
-        for i in self.extract_random():
-            if i % 2 == 0:
-                print (i)
-
+        rl = RandomList()
+        ls = rl.get_random(10,100,10)
+        print(ls)
+        for i in range(len(ls)-1):
+            for j in range(len(ls)-1):
+                if ls[j] > ls[j+1]:
+                    ls[j], ls[j+1] = ls[j+1], ls[j]
+        print ("*"*30)
+        print (ls)
+            
     @staticmethod
     def main():
         bubble=Bubble()

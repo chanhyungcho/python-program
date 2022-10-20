@@ -15,14 +15,15 @@ class SearchNumber(object): #클래스 이름 설정 및 객체 지향 프로그
     def print(self): #출력 메소드 설정
         r1 = RandomList() 
         num = self.num
-        print(r1.get_random(11,100,10))
-        for i in [r1.get_random(11,100,10)]:
+        r2 = r1.get_random(11,100,10)
+        print(r2)
+        for i in r2:
             if i % num == 0:
                 print (i)
 
 
     @staticmethod #데코레이터 패턴
-    def main(): #
+    def main(): #메인보드 역할
         num = int(input("숫자 : "))
         sn = SearchNumber(num)
         sn.print()
