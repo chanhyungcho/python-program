@@ -17,8 +17,6 @@ BMI 지수에 따른 결과는 다음과 같다.
 홍길동 170 79 정상
 ***************************
 '''
-from ast import main
-
 
 class Bmi(object):
     def __init__(self, name, cm, kg) -> None:
@@ -65,12 +63,28 @@ class Bmi(object):
         result = f"{name} {cm} {kg} {biman}"
         print(f'{title} \n {aster} \n {schema} \n {aster} \n {result} \n {aster} ')
 
+
     @staticmethod
-    def main():
+    def print_menu():
         name = input("이름: ")
         cm = int(input("키: "))
         kg = int(input("몸무게: "))
         bmi = Bmi(name, cm, kg)
         bmi.execute()
+        return int(input("메뉴: "))
+    @staticmethod
+    def main():
+        ls = []
+        while True:
+            menu = Bmi.print_menu()
+            if menu == 1: print("1. Bmi등록")
+            elif menu == 2: print("2. Bmi출력")
+            elif menu == 3: print("3. Bmi삭제")
+            elif menu == 4: print("4. 종료")
+                            break
+            else: print("잘못된 접근입니다")
+
+
+
         
 Bmi.main()

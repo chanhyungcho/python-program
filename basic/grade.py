@@ -57,7 +57,7 @@ class Grade(object):
                     int(input("수학: ")))
 
     @staticmethod
-    def print_table(ls):
+    def print_tables(ls):
         print("### 성적표 ###")
         print("********************************")
         print("이름 국어 영어 수학 총점 평균 학점")
@@ -84,7 +84,7 @@ class Grade(object):
                 ls.append(Grade.new_grade())
             elif menu == 2:
                 print(" ### 성적 출력 ### ")
-                Grade.print_table(ls)
+                Grade.print_tables(ls)
             elif menu == 3:
                 print(" ### 성적 삭제 ### ")
             elif menu == 4:

@@ -1,33 +1,53 @@
-from curses import pair_number
-
-
-class Contact(object):
-    def __init__(self,name,pnum,mail,addr) -> None:
+'''
+아이디, 비밀번호, 이름을 받아서
+회원가입, 목록, 탈퇴하는 프로그램을 배발하시오.
+'''
+class Member(object):
+    def __init__(self, id, pw, name):
+        self.id = id
+        self.pw = pw
         self.name = name
-        self.pnum = pnum
-        self.mail = addr
-        self.mail = mail
-
-    @staticmethod
-    def new_contact():
-        name = (input("이름:"))
-        pnum = (input("번호:"))
-        mail = (input("메일:"))
-        addr = (input("주소:"))
-        return Contact(name,pnum,mail,addr)
 
     def print_info(self):
-        print(f"{self.name}, {self.pnum}, {self.mail}, {self.addr}")
+        print(self.id, self.pw, self.name)
 
     @staticmethod
-    def get_contact():
-        for i in 
+    def print_member(ls):
+        [i.print_info() for i in ls]
+
+    @staticmethod
+    def get_member():
+        id = input("아이디: ")
+        pw = input("비밀번호: ")
+        name = input("이름: ")
+        return Member(id, pw, name)
 
     @staticmethod
     def print_menu():
-        print("1. 연락처 등록")
-        print("2. 연락처 출력")
-        print("3. 연락처 삭제")
-        print("4. 종료")
-        menu = input("메뉴 선택: ")
+        print("1번메뉴: 가입")
+        print("2번메뉴: 목록")
+        print("3번메뉴: 탈퇴")
+        print("4번메뉴: 종료")
+        menu = input("메뉴번호 입력: ")
         return int(menu)
+
+    @staticmethod
+    def main():
+        ls = []
+        while True:
+            menu = Member.print_menu()
+            if menu == 1:
+                print(" ### 가입 ### ")
+                member = Member.get_member()
+                ls.append(member)
+            elif menu == 2:
+                print(" ### 목록 ### ")
+                member.print_member(ls)
+            elif menu == 3:
+                print(" ### 탈퇴 ### ")
+            elif menu == 4:
+                print(" ### 종료 ### ")
+                break
+            else: print("잘못된 메뉴번호 입니다.")
+
+Member.main()

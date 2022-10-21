@@ -24,16 +24,20 @@ class Contact(object):
 
     @staticmethod
     def get_contacts(ls):
-        for i in ls:
-            i.print_info()
-        
+        [i.print_info() for i in ls]
+    @staticmethod
+    def delect_contact(ls, name):
+        del ls[[i for i,j in enumerate(ls)
+                if j.name == name][0]]
+
+
     @staticmethod
     def print_menu():
         print("1. 연락처 등록")
         print("2. 연락처 출력")
         print("3. 연락처 삭제")
         print("4. 종료")
-        menu = input("메뉴 선택: ")
+        menu = int(input("메뉴 선택: "))
         return int(menu)
 
     @staticmethod
@@ -47,9 +51,11 @@ class Contact(object):
                 ls.append(contact) #덧붙이다, 첨부하다 / [ ]에 추가할 때는 append
             elif menu == 2:
                 print("###연락처 출력###")
-                Contact.get_contacts(ls)
+                contact.get_contacts(ls)
             elif menu == 3:
-                print("###연락처 삭제###")
+                print("###연락처 목록###")
+                name = input("삭제할 이름")
+                contact.delect_contact(ls,name)
             elif menu == 4:
                 print(" 주소록 어플을 종료합니다...")
                 break

@@ -17,23 +17,61 @@
 ********************************
 """
 
-class Grade(object):
-    def __init__(self,name,ko,en,ma) -> None:
+class Prac(object):
+    def __init__(self,name,ko,en,ma):
         self.name = name
         self.ko = ko
         self.en = en
         self.ma = ma
-        self.total = 0
-        self.avg = 0.0
         self.grade = ""
 
-    def set_total(self):
+    def get_total(self):
         self.total = self.ko + self.en + self.ma
         return self.total
 
-    def set_avg(self):
+    def get_avg(self):
         self.avg = self.total / 3
         return self.avg
 
-    def set_grade(self):
-        if self.avg >= 90 
+    def get_grade(self):
+        avg = self.avg
+        if avg >= 90:
+            result = "A"
+        elif avg >= 80:
+            result = "B"
+        elif avg >= 70:
+            result = "C"
+        elif avg >= 60:
+            result = "D"
+        elif avg >= 50:
+            result = "E"
+        else:
+            result = "F"
+        self.grade = result
+
+    def print_grade(self):
+        print("### 성적표 ###")
+        print("********************************")
+        print("이름 국어 영어 수학 총점 평균 학점")
+        print("********************************")
+        print(f"{self.name} {self.ko} {self.en} {self.ma} {self.total} {self.avg} {self.grade}")
+        print("********************************")
+
+    @staticmethod
+
+
+    @staticmethod
+    def main():
+        ls = []
+        while True:
+            name = input("이름: ")
+            ko = int(input("국어:"))
+            en = int(input("영어:"))
+            ma = int(input("수학:"))
+            pr = Prac(name,ko,en,ma)
+            pr.get_total()
+            pr.get_avg()
+            pr.get_grade()
+            pr.print_grade()
+
+Prac.main()

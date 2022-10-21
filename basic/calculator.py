@@ -23,12 +23,27 @@ class Calculator(object):
         print(f"{num1} {op} {num2} = {result}")
 
     @staticmethod
+    def print_menu():
+            num1 = int(input("숫자 : "))
+            op = input("+, -, *, /, %")
+            num2 = int(input("숫자 : "))
+            calculator = Calculator(num1, op, num2)
+            calculator.calc()
+
+    @staticmethod
     def main():
-        num1 = int(input("숫자 : "))
-        op = input("+, -, *, /, %")
-        num2 = int(input("숫자 : "))
-        calculator = Calculator(num1, op, num2)
-        calculator.calc()
+        ls = []
+        while True:
+            menu = Calculator.print_menu()
+            if menu == 0: break
+            elif menu == 1:
+                print("등록") #CRUD create read update delect
+            elif menu == 2:
+                print("목록")
+            elif menu == 3:
+                print("삭제")
+            else: print("없는 메뉴입니다. 다시 선택해주세요.")
+
 
 
 Calculator.main()
