@@ -77,11 +77,15 @@ class Bmi(object):
         ls = []
         while True:
             menu = Bmi.print_menu()
-            if menu == 1: print("1. Bmi등록")
-            elif menu == 2: print("2. Bmi출력")
-            elif menu == 3: print("3. Bmi삭제")
-            elif menu == 4: print("4. 종료")
-                            break
+            if menu == 1:
+                print("1. Bmi등록")
+            elif menu == 2:
+                print("2. Bmi출력")
+            elif menu == 3:
+                print("3. Bmi삭제")
+            elif menu == 4:
+                print("4. 종료")
+                break
             else: print("잘못된 접근입니다")
 
 

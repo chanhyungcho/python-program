@@ -5,16 +5,9 @@ class Odd_Even(object):
         pass
 
     def print(self):
-        r1 = RandomList()
-        print(r1.get_random(1,10,3))
-        for i in r1.get_random(10,100,10):
-            if i % 2 == 0:
-                print(f"짝수: {i}")
-            else:
-                print(f"홀수: {i} ")
+                r1 = RandomList()
+               print([f"짝수: {i}" if i % 2 == 0 else f"홀수: {i} " for i in r1.get_random(10,100,10)])
 
-       print([f"짝수: {i}" if i % 2 == 0 else f"홀수: {i} " for i in r1.get_random(10,100,10)])
-         [i if True else for i in []]
 
 
 '''
